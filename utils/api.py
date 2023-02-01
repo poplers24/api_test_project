@@ -1,3 +1,5 @@
+import allure
+
 from utils.http_method import Http_methods
 
 
@@ -75,4 +77,4 @@ class Google_maps_api():
         }
         result_delete = Http_methods.put(delete_url, json_for_delete_new_location)
         print(result_delete.text)
-        return  result_delete
+        return result_delete
