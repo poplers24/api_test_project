@@ -1,16 +1,15 @@
-import allure
 
 from utils.http_method import Http_methods
 
 
-"""Методы для тестирования Google maps api"""
+"""Methods for testing Google maps api"""
 
-base_url = "https://rahulshettyacademy.com"         # Базовая url
-key = "?key=qaclick123"                             # Параметр для всех запросов
+base_url = "https://rahulshettyacademy.com"         # base url
+key = "?key=qaclick123"                             # parameter for all requests
 
 class Google_maps_api():
 
-    """Метод для создания новой локации"""
+    """Method for creating a new location"""
     @staticmethod
     def create_new_place():
 
@@ -30,30 +29,30 @@ class Google_maps_api():
             "language": "French-IN"
         }
 
-        post_resource = "/maps/api/place/add/json"  # Ресурс метода Post
+        post_resource = "/maps/api/place/add/json"  # method resource Post
         post_url = base_url + post_resource + key
         print(post_url)
         result_post = Http_methods.post(post_url, json_for_create_new_place)
         print(result_post.text)
         return result_post
 
-    """Метод для проверки новой локации"""
+    """Method for checking a new location"""
 
     @staticmethod
     def get_new_place(place_id):
 
-        get_resource = "/maps/api/place/get/json"   # Ресурс метода Get
+        get_resource = "/maps/api/place/get/json"   # method resource Get
         get_url = base_url + get_resource + key + "&place_id=" + place_id
         print(get_url)
         result_get = Http_methods.get(get_url)
         print(result_get.text)
         return result_get
 
-    """Метод для изменения новой локации"""
+    """Method for changing a new location"""
 
     @staticmethod
     def put_new_place(place_id):
-        put_resource = "/maps/api/place/update/json"  # Ресурс метода Put
+        put_resource = "/maps/api/place/update/json"  # method resource Put
         put_url = base_url + put_resource + key
         print(put_url)
         json_for_update_new_location = {
@@ -65,11 +64,11 @@ class Google_maps_api():
         print(result_put.text)
         return result_put
 
-    """Метод для удаления новой локации"""
+    """Method for deleting a new location"""
 
     @staticmethod
     def delete_new_place(place_id):
-        delete_resource = "/maps/api/place/delete/json"  # Ресурс метода Delete
+        delete_resource = "/maps/api/place/delete/json"  # method resource Delete
         delete_url = base_url + delete_resource + key
         print(delete_url)
         json_for_delete_new_location = {

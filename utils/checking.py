@@ -1,4 +1,4 @@
-"""Методы для проверки ответов запросов"""
+"""Methods for Checking Query Responses"""
 import json
 
 import allure
@@ -6,32 +6,31 @@ import allure
 
 class Checking():
 
-    """Метод для проверки статус кода"""
-
+    """Method for checking code status"""
 
     @staticmethod
     @allure.step
     def check_status_code(result, status_code):
-        assert status_code == result.status_code, f"Провал! Статус код {result.status_code} не соответствует ожидаемому {status_code}"
-        print("Успешно! Статус код = " + str(result.status_code))
+        assert status_code == result.status_code, f"Failure! Status code {result.status_code} does not match the expected {status_code}"
+        print("Successfully! Status code = " + str(result.status_code))
 
-    """Метод для проверки наличия обязательных полей в ответе запроса"""
 
+    """Method for checking the presence of required fields in the request response"""
 
     @staticmethod
     @allure.step
     def check_json_token(result, expected_value):
         token = json.loads(result.text)
-        assert list(token) == expected_value, f"Поля в ответе {list(token)} не соответствуют ожидаемым {expected_value}"
-        print("Все поля присутствуют")
+        assert list(token) == expected_value, f"Fields in the response {list(token)} do not match the expected {expected_value}"
+        print("All fields are present")
 
-    """Метод для проверки значений обязательных полей в ответе запроса"""
 
+    """Method for checking the values of required fields in the request response"""
 
     @staticmethod
     @allure.step
     def check_json_value(result, field_name, expected_value):
         check = result.json()
         check_info = check.get(field_name)
-        assert check_info == expected_value, f"Значение поля status - {check_info} не соответствует ожидаемому значению {expected_value}"
-        print(field_name + " верен!")
+        assert check_info == expected_value, f"Status field value - {check_info} does not match the expected value {expected_value}"
+        print(field_name + " true!")

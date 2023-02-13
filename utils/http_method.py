@@ -3,7 +3,7 @@ import requests
 
 from utils.logger import Logger
 
-"""Список HTTP методов"""
+"""List of HTTP Methods"""
 
 class Http_methods:
     headers = {'Content-Type': 'application/json'}
